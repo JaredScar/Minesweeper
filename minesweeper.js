@@ -39,12 +39,10 @@ function setup(canvasName) {
     grid[i].neighborCount(grid)
   }
 
-  ticker = setInterval(update, 1000)
   update()
 }
 
 function update() {
-  console.log("tick")
 
   for (let i = 0; i < grid.length; i++) {
     grid[i].show()
@@ -57,14 +55,12 @@ function update() {
       }
     }
 
-    setTimeout(clearInterval(ticker), 100)
     console.log('ending game loop');
   }
 
 }
 
 function mouseClick(event) {
-  console.log("click")
 
   var x = event.x - draw.canvas.offsetLeft
   var y = event.y - draw.canvas.offsetTop
@@ -74,7 +70,6 @@ function mouseClick(event) {
 
     if (grid[i].clicked(x, y)) {
 
-      console.log(grid[i]);
       /*
           if cell with nothing around it is clicked
           click on everything around it until a non-zero number is found
@@ -90,6 +85,7 @@ function mouseClick(event) {
 
     }
   }
+  update()
 }
 
 function hasWon() {
