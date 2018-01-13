@@ -10,7 +10,6 @@ function Cell(i, j, size, canvasName) {
   this.i = i
   this.j = j
   this.bomb = false
-  this.flagged = false
   this.number = 0
   this.revealed = false
 
@@ -27,8 +26,6 @@ function Cell(i, j, size, canvasName) {
     this.draw.square(this.x, this.y, this.size)
     if (this.revealed) {
       if (this.bomb) {
-
-        this.flagged = false
 
         this.draw.circle(
           this.x + (this.size / 2),
@@ -101,9 +98,14 @@ function Cell(i, j, size, canvasName) {
 
   this.reveal = () => {
     this.revealed = true;
+    if (!this.bomb && this.number === 0) {
+      for (var i = 0; i < this.neighbors.length; i++) {
+        if (!this.neighbors[i].revealed) {
+          this.neighbors[i].reveal();
+        }
+      }
+    }
   }
 
-  this.flag = () => {
-    this.flagged = !this.flagged
-  }
+
 }
