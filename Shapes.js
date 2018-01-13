@@ -1,5 +1,5 @@
-function Shapes(canvas) {
-  this.canvas = document.getElementById(canvas)
+function Shapes(canvasName) {
+  this.canvas = document.getElementById(canvasName)
   this.ctx = this.canvas.getContext("2d")
 
   this.line = (x1, y1, x2, y2) => {

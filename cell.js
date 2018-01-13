@@ -6,7 +6,7 @@ function index(i, j) {
   return i + j * cols;
 }
 
-function Cell(i, j, size, canvas) {
+function Cell(i, j, size, canvasName) {
   this.i = i
   this.j = j
   this.bomb = false
@@ -20,7 +20,7 @@ function Cell(i, j, size, canvas) {
 
   this.neighbors = []
 
-  this.draw = new Shapes(canvas)
+  this.draw = new Shapes(canvasName)
 
   this.show = () => {
 
