@@ -1,0 +1,26 @@
+body {
+  /*background: lightslategrey;*/
+  width: 100%;
+  text-align: center;
+  /*background: rgb(130, 24, 91);*/
+  background: lightgrey;
+}
+
+#container {
+  padding: 5px;
+  position: absolute;
+}
+
+canvas {
+  background-color: powderblue;
+}
+
+#Loser {
+  background-color: red;
+  display: none;
+}
+
+#Winner {
+  background-color: green;
+  display: none;
+}
