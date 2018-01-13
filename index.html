@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>MineSweeper</title>
+	<style>
+		body {
+			/*background: lightslategrey;*/
+			width: 100%;
+			text-align: center;
+			/*background: rgb(130, 24, 91);*/
+			background: lightgrey;
+		}
+
+		#container {
+			padding: 5px;
+			position: absolute;
+		}
+
+		canvas {
+			background-color: powderblue;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<canvas id="gameCanvas" width="600" height="600">
+
+		</canvas>
+	</div>
+</body>
+
+<script src="./Drawing.js"></script>
+<script src="./cell.js"></script>
+<script src="./minesweeper.js"></script>
+
+</html>
