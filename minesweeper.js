@@ -6,8 +6,6 @@ var cols, rows
 
 var difficulty = 50
 
-var bombLocs = []
-
 var ticker
 var draw
 
@@ -29,7 +27,6 @@ function setup(canvasName) {
     //console.log(r)
     if (grid[r].bomb === false) {
       grid[r].bomb = true;
-      bombLocs.push(r);
     } else {
       i--
     }
