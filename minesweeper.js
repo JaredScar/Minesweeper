@@ -55,7 +55,6 @@ function update() {
       }
     }
 
-    console.log('ending game loop');
   }
 
 }
@@ -79,6 +78,7 @@ function mouseClick(event) {
 
       if (grid[i].bomb) {
         gameOver = true;
+        update()
       } else if (hasWon()) {
         winner();
       }
