@@ -22,7 +22,7 @@ function Shapes(canvasName) {
   this.square = (x, y, size, color) => {
 
     this.ctx.beginPath();
-    this.ctx.rect(x, y, x + size, y + size)
+    this.ctx.rect(x, y, size, size)
     if (color) {
       this.ctx.fillStyle = color
       this.ctx.fill();
