@@ -8,40 +8,38 @@ var difficulty = 50
 
 var bombLocs = []
 
-var canvas
 var ticker
 var draw
 
 
-function setup(c) {
-  canvas = c
-  draw = new Shapes(canvas)
+function setup(canvasName) {
+  draw = new Shapes(canvasName)
 
   cols = Math.floor(draw.canvas.width / w)
   rows = Math.floor(draw.canvas.height / w)
 
   for (var j = 0; j < rows; j++) {
     for (var i = 0; i < cols; i++) {
-      grid.push(new Cell(i, j, w, canvas))
+      grid.push(new Cell(i, j, w, canvasName))
     }
   }
 
-  for(var i = 0;i < difficulty; i++){
-    var r  = Math.floor(Math.random() * cols * rows)
+  for (var i = 0; i < difficulty; i++) {
+    var r = Math.floor(Math.random() * cols * rows)
     //console.log(r)
-    if(grid[r].bomb === false){
+    if (grid[r].bomb === false) {
       grid[r].bomb = true;
       bombLocs.push(r);
-    } else{
+    } else {
       i--
     }
   }
 
-  for (var i = 0; i < grid.length; i++){
+  for (var i = 0; i < grid.length; i++) {
     grid[i].neighborCount(grid)
   }
 
-  //ticker = setInterval(update,1000)
+  ticker = setInterval(update, 1000)
   update()
 }
 
@@ -63,27 +61,20 @@ function update() {
     console.log('ending game loop');
   }
 
-
 }
 
-function mouseClick(event){
+function mouseClick(event) {
   console.log("click")
 
-  var x = event.x
-  var y = event.y
-  console.log(x)
-  console.log(y)
-  console.log(draw.canvas.offSetLeft)
-  console.log(draw.canvas.offSetTop)
+  var x = event.x - draw.canvas.offsetLeft
+  var y = event.y - draw.canvas.offsetTop
 
   for (var i = 0; i < grid.length && !gameOver; i++) {
     // console.log( grid[ i ] );
 
-
-
     if (grid[i].clicked(x, y)) {
 
-      console.log( grid[ i ] );
+      console.log(grid[i]);
       /*
           if cell with nothing around it is clicked
           click on everything around it until a non-zero number is found
@@ -101,9 +92,9 @@ function mouseClick(event){
   }
 }
 
-function hasWon(){
-  return grid.every(function(item, index, arr){
-    if (item.bomb){
+function hasWon() {
+  return grid.every(function(item, index, arr) {
+    if (item.bomb) {
       return !item.revealed
     } else {
       return item.revealed
@@ -112,9 +103,8 @@ function hasWon(){
 }
 
 function winner() {
-  setTimeout(function(){
+  setTimeout(function() {
     alert("YOU WON")
   }, 500)
   gameOver = true
 }
-
