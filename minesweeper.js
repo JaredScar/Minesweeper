@@ -1,14 +1,19 @@
-var grid = []
-var w = 30
-var gameOver = false
+/*
+THINGS TO ADD
 
-var cols, rows
+- ability to change difficulty
+- timer
+- score board if possible, top 5
+- button to start new game so the page does have to be reloaded
+*/
 
-var difficulty = 50
 
-var ticker
-var draw
-
+let grid = []
+let w = 30 // size of squares
+let gameOver = false
+let cols, rows
+let difficulty = 50
+let draw
 
 function setup(canvasName) {
   draw = new Shapes(canvasName)
@@ -16,14 +21,14 @@ function setup(canvasName) {
   cols = Math.floor(draw.canvas.width / w)
   rows = Math.floor(draw.canvas.height / w)
 
-  for (var j = 0; j < rows; j++) {
-    for (var i = 0; i < cols; i++) {
+  for (let j = 0; j < rows; j++) {
+    for (let i = 0; i < cols; i++) {
       grid.push(new Cell(i, j, w, canvasName))
     }
   }
 
-  for (var i = 0; i < difficulty; i++) {
-    var r = Math.floor(Math.random() * cols * rows)
+  for (let i = 0; i < difficulty; i++) {
+    let r = Math.floor(Math.random() * cols * rows)
     //console.log(r)
     if (grid[r].bomb === false) {
       grid[r].bomb = true;
@@ -32,7 +37,7 @@ function setup(canvasName) {
     }
   }
 
-  for (var i = 0; i < grid.length; i++) {
+  for (let i = 0; i < grid.length; i++) {
     grid[i].neighborCount(grid)
   }
 
@@ -46,7 +51,7 @@ function update() {
   }
 
   if (gameOver) {
-    for (var i = 0; i < grid.length; i++) {
+    for (let i = 0; i < grid.length; i++) {
       if (grid[i].bomb && !hasWon()) {
         grid[i].revealed = true;
       }
@@ -58,10 +63,10 @@ function update() {
 
 function mouseClick(event) {
 
-  var x = event.x - draw.canvas.offsetLeft
-  var y = event.y - draw.canvas.offsetTop
+  let x = event.x - draw.canvas.offsetLeft
+  let y = event.y - draw.canvas.offsetTop
 
-  for (var i = 0; i < grid.length && !gameOver; i++) {
+  for (let i = 0; i < grid.length && !gameOver; i++) {
     // console.log( grid[ i ] );
 
     if (grid[i].clicked(x, y)) {
@@ -75,11 +80,13 @@ function mouseClick(event) {
 
       if (grid[i].bomb) {
         gameOver = true;
-        var loser = document.getElementById("loser")
+        let loser = document.getElementById("loser")
         loser.style.display = "inline"
         update()
       } else if (hasWon()) {
-        winner();
+        gameOver = true
+        let winner = document.getElementById("winner")
+        winner.style.display = "inline"
       }
 
     }
@@ -95,10 +102,4 @@ function hasWon() {
       return item.revealed
     }
   })
-}
-
-function winner() {
-  var winner = document.getElementById("winner")
-  winner.style.display = "inline"
-  gameOver = true
 }
