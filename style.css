@@ -29,3 +29,10 @@ canvas {
   display: none;
   border: 3px solid black;
 }
+
+#title{
+  padding: 10px;
+  position: absolute;
+  left: 2%;
+  border: 3px solid black;
+}
