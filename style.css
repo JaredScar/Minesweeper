@@ -6,21 +6,26 @@ body {
   background: lightgrey;
 }
 
-#container {
-  padding: 5px;
-  position: absolute;
-}
-
 canvas {
   background-color: powderblue;
 }
 
 #Loser {
   background-color: red;
+  position: absolute;
+  top: 40%;
+  left: 5%;
+  padding: 10px 50px;
   display: none;
+  border: 3px solid black;
 }
 
 #Winner {
   background-color: green;
+  position: absolute;
+  top: 40%;
+  left: 5%;
+  padding: 10px 50px;
   display: none;
+  border: 3px solid black;
 }

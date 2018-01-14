@@ -75,6 +75,8 @@ function mouseClick(event) {
 
       if (grid[i].bomb) {
         gameOver = true;
+        var loser = document.getElementById("Loser")
+        loser.style.display = "inline"
         update()
       } else if (hasWon()) {
         winner();
@@ -96,8 +98,7 @@ function hasWon() {
 }
 
 function winner() {
-  setTimeout(function() {
-    alert("YOU WON")
-  }, 500)
+  var winner = document.getElementById("Winner")
+  winner.style.display = "inline"
   gameOver = true
 }
