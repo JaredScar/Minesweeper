@@ -2,7 +2,6 @@ function index(i, j) {
   if (i < 0 || j < 0 || i > cols - 1 || j > rows - 1) {
     return -1;
   }
-
   return i + j * cols;
 }
 
@@ -23,7 +22,7 @@ function Cell(i, j, size, canvasName) {
 
   this.show = () => {
 
-    this.draw.square(this.x, this.y, this.size)
+    this.draw.square(this.x, this.y, this.size, "", 1)
     if (this.revealed) {
       if (this.bomb) {
 
@@ -31,11 +30,12 @@ function Cell(i, j, size, canvasName) {
           this.x + (this.size / 2),
           this.y + (this.size / 2),
           this.size / 4,
-          "red"
+          "red",
+          3
         )
       } else {
 
-        this.draw.square(this.x, this.y, this.size, "grey")
+        this.draw.square(this.x, this.y, this.size, "grey", 1)
 
         if (this.number !== 0) {
           this.draw.text(
@@ -44,7 +44,6 @@ function Cell(i, j, size, canvasName) {
             this.number
           )
         }
-
       }
     }
 
@@ -106,6 +105,4 @@ function Cell(i, j, size, canvasName) {
       }
     }
   }
-
-
 }
