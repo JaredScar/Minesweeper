@@ -42,6 +42,7 @@ function setup(canvasName) {
   }
 
   update()
+  alert("1) Click on a box\n2) The number in the box shows how many bombs are in the surrounding boxes\n3) Press alt and click on a box at the same time to flag the box as a bomb\n4) You won the game when theres nothing but bombs left\n\n Good Luck!")
 }
 
 function update() {
@@ -62,6 +63,8 @@ function update() {
 }
 
 function mouseClick(event) {
+  console.log(event);
+  // use altkey
 
   let x = event.x - draw.canvas.offsetLeft
   let y = event.y - draw.canvas.offsetTop
@@ -69,7 +72,10 @@ function mouseClick(event) {
   for (let i = 0; i < grid.length && !gameOver; i++) {
     // console.log( grid[ i ] );
 
-    if (grid[i].clicked(x, y)) {
+    if (event.altKey && grid[i].clicked(x, y)) {
+      console.log("flagged");
+      grid[i].flagged = true
+    } else if (grid[i].clicked(x, y)) {
 
       /*
           if cell with nothing around it is clicked
@@ -77,6 +83,10 @@ function mouseClick(event) {
           */
 
       grid[i].reveal();
+
+      if (grid[i].flagged) {
+        grid[i].flagged = false;
+      }
 
       if (grid[i].bomb) {
         gameOver = true;

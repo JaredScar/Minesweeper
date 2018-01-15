@@ -11,6 +11,7 @@ function Cell(i, j, size, canvasName) {
   this.bomb = false
   this.number = 0
   this.revealed = false
+  this.flagged = false
 
   this.x = i * size
   this.y = j * size
@@ -50,7 +51,7 @@ function Cell(i, j, size, canvasName) {
     if (this.flagged) {
       this.draw.text(
         this.x + 10,
-        this.y + 25,
+        this.y + 23,
         "?"
       )
     }
@@ -100,7 +101,7 @@ function Cell(i, j, size, canvasName) {
     if (!this.bomb && this.number === 0) {
       for (var i = 0; i < this.neighbors.length; i++) {
         if (!this.neighbors[i].revealed) {
-          this.neighbors[i].reveal();
+          this.neighbors[i].reveal()
         }
       }
     }
