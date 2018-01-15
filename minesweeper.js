@@ -46,6 +46,7 @@ function setup(canvasName) {
 }
 
 function update() {
+  draw.clear()
 
   for (let i = 0; i < grid.length; i++) {
     grid[i].show()
@@ -63,7 +64,7 @@ function update() {
 }
 
 function mouseClick(event) {
-  console.log(event);
+  // console.log(event);
   // use altkey
 
   let x = event.x - draw.canvas.offsetLeft
@@ -73,8 +74,7 @@ function mouseClick(event) {
     // console.log( grid[ i ] );
 
     if (event.altKey && grid[i].clicked(x, y)) {
-      console.log("flagged");
-      grid[i].flagged = true
+      grid[i].flag()
     } else if (grid[i].clicked(x, y)) {
 
       /*
@@ -84,9 +84,9 @@ function mouseClick(event) {
 
       grid[i].reveal();
 
-      if (grid[i].flagged) {
-        grid[i].flagged = false;
-      }
+      // if (grid[i].flagged) {
+      //   grid[i].flagged = false;
+      // }
 
       if (grid[i].bomb) {
         gameOver = true;

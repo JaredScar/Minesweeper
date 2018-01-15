@@ -98,6 +98,9 @@ function Cell(i, j, size, canvasName) {
 
   this.reveal = () => {
     this.revealed = true;
+    if (this.flagged) {
+      this.flagged = false
+    }
     if (!this.bomb && this.number === 0) {
       for (var i = 0; i < this.neighbors.length; i++) {
         if (!this.neighbors[i].revealed) {
@@ -105,5 +108,9 @@ function Cell(i, j, size, canvasName) {
         }
       }
     }
+  }
+
+  this.flag = () => {
+    this.flagged = !this.flagged
   }
 }

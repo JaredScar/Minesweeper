@@ -37,4 +37,8 @@ function Shapes(canvasName) {
     this.ctx.font = "20px Arial"
     this.ctx.fillText(message, x, y)
   }
+
+  this.clear = () => {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+  }
 }
