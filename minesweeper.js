@@ -15,7 +15,16 @@ let cols, rows
 let difficulty = 50
 let draw
 
+let winner, loser
+
+function load(canvasName) {
+  setup(canvasName)
+  alert("1) Click on a box\n2) The number in the box shows how many bombs are in the surrounding boxes\n3) Press alt and click on a box at the same time to flag the box as a bomb\n4) You won the game when theres nothing but bombs left\n\n Good Luck!\n(the game will start over after three seconds of the game ending)")
+}
+
 function setup(canvasName) {
+  gameOver = false
+  grid = []
   draw = new Shapes(canvasName)
 
   cols = Math.floor(draw.canvas.width / w)
@@ -42,7 +51,6 @@ function setup(canvasName) {
   }
 
   update()
-  alert("1) Click on a box\n2) The number in the box shows how many bombs are in the surrounding boxes\n3) Press alt and click on a box at the same time to flag the box as a bomb\n4) You won the game when theres nothing but bombs left\n\n Good Luck!")
 }
 
 function update() {
@@ -58,7 +66,18 @@ function update() {
         grid[i].revealed = true;
       }
     }
+    setTimeout(function() {
+      setup(draw.canvas.id)
 
+
+      if (hasWon()) {
+        winner.style.display = "none"
+      } else {
+        loser.style.display = "none"
+      }
+
+
+    }, 3000);
   }
 
 }
@@ -78,9 +97,9 @@ function mouseClick(event) {
     } else if (grid[i].clicked(x, y)) {
 
       /*
-          if cell with nothing around it is clicked
-          click on everything around it until a non-zero number is found
-          */
+              if cell with nothing around it is clicked
+              click on everything around it until a non-zero number is found
+              */
 
       grid[i].reveal();
 
@@ -90,12 +109,12 @@ function mouseClick(event) {
 
       if (grid[i].bomb) {
         gameOver = true;
-        let loser = document.getElementById("loser")
+        loser = document.getElementById("loser")
         loser.style.display = "inline"
         update()
       } else if (hasWon()) {
         gameOver = true
-        let winner = document.getElementById("winner")
+        winner = document.getElementById("winner")
         winner.style.display = "inline"
       }
 
