@@ -10,7 +10,7 @@ THINGS TO ADD
 
 let grid = []
 let w = 30 // size of squares
-let gameOver = false
+let gameOver
 let cols, rows
 let difficulty = 50
 let draw
@@ -69,7 +69,6 @@ function update() {
     setTimeout(function() {
       setup(draw.canvas.id)
 
-
       if (hasWon()) {
         winner.style.display = "none"
       } else {
@@ -84,18 +83,15 @@ function update() {
 
 function mouseClick(event) {
   // console.log(event);
-  // use altkey
 
   let x = event.x - draw.canvas.offsetLeft
   let y = event.y - draw.canvas.offsetTop
 
   for (let i = 0; i < grid.length && !gameOver; i++) {
-    // console.log( grid[ i ] );
 
-    if (event.altKey && grid[i].clicked(x, y)) {
+    if (event.shiftKey && grid[i].clicked(x, y)) {
       grid[i].flag()
     } else if (grid[i].clicked(x, y)) {
-
       /*
               if cell with nothing around it is clicked
               click on everything around it until a non-zero number is found
