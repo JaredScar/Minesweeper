@@ -19,7 +19,7 @@ let winner, loser
 
 function load(canvasName) {
   setup(canvasName)
-  alert("1) Click on a box\n2) The number in the box shows how many bombs are in the surrounding boxes\n3) Press alt and click on a box at the same time to flag the box as a bomb\n4) You won the game when theres nothing but bombs left\n\n Good Luck!\n(the game will start over after three seconds of the game ending)")
+  alert("1) Click on a box\n2) The number in the box shows how many bombs are in the surrounding boxes\n3) Press shift and click on a box at the same time to flag the box as a bomb\n4) You won the game when theres nothing but bombs left\n\n Good Luck!\n(the game will start over after three seconds of the game ending)")
 }
 
 function setup(canvasName) {
