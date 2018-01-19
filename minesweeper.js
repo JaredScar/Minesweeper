@@ -1,13 +1,3 @@
-/*
-THINGS TO ADD
-
-- ability to change difficulty
-- timer
-- score board if possible, top 5
-- button to start new game so the page does have to be reloaded
-*/
-
-
 let grid = []
 let w = 30 // size of squares
 let gameOver
@@ -107,11 +97,17 @@ function mouseClick(event) {
         gameOver = true;
         loser = document.getElementById("loser")
         loser.style.display = "inline"
+        for (let i = 0; i < grid.length; i++) {
+          grid[i].lost = true
+        }
         update()
       } else if (hasWon()) {
         gameOver = true
         winner = document.getElementById("winner")
         winner.style.display = "inline"
+        for (let i = 0; i < grid.length; i++) {
+          grid[i].won = true
+        }
       }
 
     }

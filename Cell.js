@@ -21,9 +21,17 @@ function Cell(i, j, size, canvasName) {
 
   this.draw = new Shapes(canvasName)
 
+  this.lost = false
+  this.won = false
+
   this.show = () => {
 
     this.draw.square(this.x, this.y, this.size, "", 1)
+    if (this.won) {
+      this.draw.square(this.x, this.y, this.size, "green", 1)
+    } else if (this.lost) {
+      this.draw.square(this.x, this.y, this.size, "red", 1)
+    }
     if (this.revealed) {
       if (this.bomb) {
 
@@ -55,6 +63,8 @@ function Cell(i, j, size, canvasName) {
         "?"
       )
     }
+
+
   }
 
   this.neighborCount = (grid) => {
