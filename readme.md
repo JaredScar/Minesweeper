@@ -5,7 +5,7 @@ about github pages and want to make port my MineSweeper to its own website.
 P5 will no longer work, so I'm remaking the whole game with HTML Canvas.
 
 
-[You can play the game here](ahl96.github.com/Minsweeper)
+[You can play the game here](https://ahl96.github.io/Minesweeper/)
 
 *This is a purely educational project*
 
